@@ -3,7 +3,7 @@ const router = express.Router();
 const newUserController = require("../controllers/user");
 
 //signup
-router.get("/signup",(req,res)=>{
+router.get("/",(req,res)=>{
     return res.render("register");
 });
 router.post("/signup",newUserController.registerUser);

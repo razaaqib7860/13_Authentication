@@ -13,7 +13,7 @@ const shortUrl = nanoid(8);
 await Url.create({
   originalUrl,
   shortUrl
-});
+});  
 const baseUrl = `${req.protocol}://${req.get("host")}`;
 return res.render("result", { 
   SUrl: shortUrl,

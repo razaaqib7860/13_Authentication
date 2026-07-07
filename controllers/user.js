@@ -11,8 +11,9 @@ async function registerUser(req,res){
     }
     const existingUser=await User.findOne({email});
     if(existingUser){
-        return res.status(400).json({error:"User already exists"});
-    }
+            return res.render("register", {
+            error: "User already exists"});   
+     }
     await User.create({
         fullName,
         email,
@@ -24,16 +25,25 @@ async function registerUser(req,res){
 async function loginUser(req,res){
     const {email,password}=req.body;
 
-    if(!email || !password){
-    return res.status(400).json({
-        error: "Email and Password are required"
-     });
+     if (!email || !password) {
+        return res.render("login", {
+            error: "Email and Password are required"
+        });
     }
 
     const userFound=await User.findOne({email,password});
 
-    if(!userFound){
-        return res.status(401).json({error:"User not Found"})
+
+       if (!userFound) {
+        return res.render("login", {
+            error: "User not found"
+        });
+    }
+
+    if (userFound.password !== password) {
+        return res.render("login", {
+            error: "Incorrect password"
+        });
     }
 
     const token= setUser(userFound)

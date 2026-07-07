@@ -110,6 +110,12 @@ button:hover{
 
     <h1>Create Account</h1>
 
+<% if (error) { %>
+    <script>
+        alert("<%= error %>");
+    </script>
+<% } %>
+
     <p class="subtitle">
         Sign up to continue
     </p>

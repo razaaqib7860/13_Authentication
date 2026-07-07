@@ -34,7 +34,7 @@ app.get("/test", (req, res) => {
 
   app.use("/UrlShortner",restrictToLoggedinUserOnly, static);
   app.use("/url", urlRoutes);
-  app.use("/user",userRoutes);
+  app.use("/",userRoutes);
 
 const PORT = process.env.PORT ||  4003;
 app.listen(PORT, () => {

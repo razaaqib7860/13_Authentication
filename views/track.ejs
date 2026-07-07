@@ -196,6 +196,58 @@
 
         <div class="card last">
             <h3>Last Click</h3>
-            <% if (url.visitHistory.length > 0) { %>
+            <% if (url.visitHistory && url.visitHistory.length > 0) { %>
                 <h2 class="last-click">
-                    <%= new Date(url.
+                    <%= new Date(url.visitHistory[url.visitHistory.length - 1].timestamp)
+                        .toLocaleDateString('en-IN', {
+                            timeZone: 'Asia/Kolkata',
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                        }) %>
+                    <br>
+                    <span style="color: #94a3b8; font-weight: 400; font-size: 14px;">
+                        <%= new Date(url.visitHistory[url.visitHistory.length - 1].timestamp)
+                            .toLocaleTimeString('en-IN', {
+                                timeZone: 'Asia/Kolkata',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                hour12: true
+                            }) %>
+                    </span>
+                </h2>
+            <% } else { %>
+                <h2 class="no-clicks">No Clicks Yet</h2>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="info">
+        <h3>URL Details</h3>
+
+        <div class="url-group">
+            <label>Original URL</label>
+            <div class="url">
+                <%= url.originalUrl %>
+            </div>
+        </div>
+
+        <div class="url-group">
+            <label>Short URL</label>
+            <div class="url">
+                <%= url.shortUrl %>
+            </div>
+        </div>
+    </div>
+
+    <a href="/UrlShortner" class="back-btn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Generate Another URL
+    </a>
+
+</div>
+
+</body>
+</html>

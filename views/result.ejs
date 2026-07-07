@@ -175,13 +175,21 @@ function copyURL(){
 
     <h1>Short URL Generated</h1>
 
-<h2><strong>Original URL</strong></h2>
+<<p><strong>Original URL</strong></p>
 
 <div class="wrap-url">
     <a href="<%= originalUrl %>" target="_blank">
         <%= originalUrl %>
     </a>
 </div>
+
+<style>
+.wrap-url {
+    /* Magic properties that force long URLs to wrap */
+    word-break: break-all; 
+    overflow-wrap: break-word;
+}
+</style>
 
     <br><br>
 

@@ -110,7 +110,7 @@ button:hover{
 
     <h1>Create Account</h1>
 
-<% if (error) { %>
+<% if (typeof error !== "undefined" && error) { %>
     <script>
         alert("<%= error %>");
     </script>
